@@ -1,0 +1,64 @@
+﻿@page "/contact"
+@rendermode InteractiveServer
+@using System.Net.Mail
+
+<h1>Свържете се с нас</h1>
+
+<div class="form-container">
+    <div class="form-group">
+        <input @bind="Name" class="form-control" placeholder="Име" />
+    </div>
+    <div class="form-group">
+        <input @bind="RecipientEmail" class="form-control" placeholder="Email" />
+    </div>
+    <div class="form-group">
+        <textarea @bind="Message" class="form-control" placeholder="Съобщение"></textarea>
+    </div>
+    <div class="form-group">
+        <button @onclick="SendMessage" class="btn btn-primary">Изпрати съобщение</button>
+    </div>
+</div>
+
+@code {
+    private string Name { get; set; }
+    private string RecipientEmail { get; set; }
+    private string Message { get; set; }
+
+    private void SendMessage()
+    {
+        // MailMessage message = new MailMessage();
+        // message.To.Add("a.georgiev121205@gmail.com");
+
+        // message.Subject = "Message from Contact Form";
+        // message.Body = $"Name: {Name}\nRecipient's Email: {RecipientEmail}\n\n{Message}";
+
+        // SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp
+        // client.EnableSsl = true;
+        // client.UseDefaultCredentials = true;
+
+        // client.Send(message);
+
+        MailAddress from = new MailAddress(RecipientEmail, Name);
+        MailAddress to = new MailAddress("culpro.bg@gmail.com");
+        MailMessage message = new MailMessage(from, to);
+        message.Subject = Name;
+        message.Body = Message;
+        SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+        Console.WriteLine("Sending an email message to {0} by using SMTP host {1} port {2}.",
+             to.ToString(), client.Host, client.Port);
+
+        try
+        {
+            client.Send(message);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception caught in CreateTestMessage4(): {0}",
+                ex.ToString());
+        }
+
+        Name = "";
+        RecipientEmail = "";
+        Message = "";
+    }
+}

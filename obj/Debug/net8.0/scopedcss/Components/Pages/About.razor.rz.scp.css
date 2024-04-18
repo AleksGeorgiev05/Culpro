@@ -1,0 +1,32 @@
+.container[b-ugryalvi6b] {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    margin-top: 20px;
+}
+
+.colored-box[b-ugryalvi6b] {
+    background-color: #f0f0f0; /* Adjust the background color of the box */
+    border: 2px solid #ccc; /* Adjust the border color and thickness */
+    padding: 10px; /* Adjust the padding inside the box */
+    text-align: center;
+    margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.title[b-ugryalvi6b] {
+    font-size: 24px; /* Adjust the font size of the title */
+    margin-bottom: 10px; /* Adjust the margin bottom as needed */
+}
+
+.description[b-ugryalvi6b] {
+    font-size: 16px; /* Adjust the font size of the description */
+}
+
+.custom-link[b-ugryalvi6b] {
+    color: #1686CD;
+    text-decoration: none;
+}
+
+.custom-link:hover[b-ugryalvi6b] {
+    color: #166BCD;
+    text-decoration: none;
+}
